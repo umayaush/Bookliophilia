@@ -1,168 +1,201 @@
 .page {
-  --gray-rgb: 0, 0, 0;
-  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
-  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-
-  display: grid;
-  grid-template-rows: 20px 1fr 20px;
   align-items: center;
   justify-items: center;
   min-height: 100svh;
-  padding: 80px;
   gap: 64px;
   font-family: var(--font-geist-sans);
+  background-color: rgb(171, 115, 129);
+  color: white;
 }
 
-@media (prefers-color-scheme: dark) {
-  .page {
-    --gray-rgb: 255, 255, 255;
-    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
-    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-  }
-}
-
-.main {
+.headerDiv {
+  background-color: rgb(121, 64, 78);
+  width: 100%;
+  height: auto;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  grid-row-start: 2;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
 }
 
-.main ol {
-  font-family: var(--font-geist-mono);
-  padding-left: 0;
-  margin: 0;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: -0.01em;
-  list-style-position: inside;
+.headerDiv h1 {
+  font-size: 5rem;
 }
 
-.main li:not(:last-of-type) {
-  margin-bottom: 8px;
-}
-
-.main code {
-  font-family: inherit;
-  background: var(--gray-alpha-100);
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-weight: 600;
-}
-
-.ctas {
+.searchBar {
   display: flex;
-  gap: 16px;
+  flex-direction: row;
+  border-radius: 0.2rem;
+  overflow: hidden;
+  margin: 5rem 0;
+  width: 30rem;
 }
 
-.ctas a {
-  appearance: none;
-  border-radius: 128px;
-  height: 48px;
-  padding: 0 20px;
+.searchBar input, .searchBar button {
   border: none;
-  border: 1px solid transparent;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
+  padding: 1rem;
+  font-size: medium;
+}
+
+.searchBar input {
+  background-color: white;
+  width: 80%;
+  color: black;
+}
+
+.searchBar button {
+  background-color: rgb(121, 64, 78);
+  flex: 1;
+  flex-shrink: 0;
   cursor: pointer;
+}
+
+.searchBar button:hover {
+  background: rgb(63, 33, 41);
+  
+}
+
+.booksGrid {
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.booksGrid p {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1rem;
+  color: white;
+  text-align: center;
+}
+
+.bookCard {
+  background-color: rgb(121, 64, 78);
+  border-radius: 0.25rem;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+  gap: 1rem;
+  width: 100%;
+  height: 25rem;
+  overflow: hidden;
+}
+
+.bookCard:hover {
+  transform: scale(1.05);
+  background: rgb(63, 33, 41);
+}
+
+.bookImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.bookShortDetails {
+  flex-direction: column;
+  display: flex;
+  gap: 1rem;
+}
+
+.bookShortDetails h3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+.summary {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 11;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bookDetails {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
 }
 
-a.primary {
-  background: var(--foreground);
-  color: var(--background);
-  gap: 8px;
-}
-
-a.secondary {
-  border-color: var(--gray-alpha-200);
-  min-width: 180px;
-}
-
-.footer {
-  grid-row-start: 3;
+.openCard {
+  background-color: rgb(171, 115, 129);;
+  color: white;
+  padding: 2rem;
+  overflow-y: auto;
   display: flex;
-  gap: 24px;
-}
-
-.footer a {
-  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
+  width: 40rem;
+  gap: 1rem;
+  border-radius: 0.5rem;
 }
 
-.footer img {
-  flex-shrink: 0;
+.openCard h1 {
+  text-align: center;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
-
-  .footer a:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-  }
+.bookImageLarge {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
 }
 
-@media (max-width: 600px) {
-  .page {
-    padding: 32px;
-    padding-bottom: 80px;
-  }
+.readMoreBtn {
+  background-color: rgb(121, 64, 78);
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
 
-  .main {
-    align-items: center;
-  }
+.readMoreBtn:hover {
+  background: rgb(63, 33, 41);
+}
 
-  .main ol {
-    text-align: center;
-  }
+.closeButton {
+  background: rgb(121, 64, 78);
+  color: white;
+  border: none;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
 
-  .ctas {
-    flex-direction: column;
-  }
+.closeButton:hover {
+  background: rgb(63, 33, 41);
+}
 
-  .ctas a {
-    font-size: 14px;
-    height: 40px;
-    padding: 0 16px;
-  }
-
-  a.secondary {
-    min-width: auto;
-  }
-
-  .footer {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+@media (max-width: 768px) {
+  .booksGrid {
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row on smaller screens */
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
+@media (max-width: 480px) {
+  .booksGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row on very small screens */
   }
 }
+
